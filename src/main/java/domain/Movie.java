@@ -29,4 +29,11 @@ public class Movie {
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 
+    /*
+    실행 시점에 할인 정책을 변경할 수 있도록 하기 위해서, (유연한 설계의 목표)
+     */
+    public void changeDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+
 }
