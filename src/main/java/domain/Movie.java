@@ -18,7 +18,8 @@ public abstract class Movie {
         this.discountConditions = Arrays.asList(discountConditions);
     }
 
-    public Money getFee() {
+    // 서브클래스에서만 사용하도록 접근을 protected로 제한
+    protected Money getFee() {
         return fee;
     }
 
@@ -29,9 +30,10 @@ public abstract class Movie {
     상속(inheritance), 다형성, 그리고 추상화(abstraction)
      */
     public Money calculateMovieFee(Screening screening) {
-        if (isDiscoiuntable(screening)) {
+        if (isDiscountable(screening)) {
             return fee.minus(calculateDiscountAmount());
         }
+        return fee;
     }
 
     private boolean isDiscountable(Screening screening) {
