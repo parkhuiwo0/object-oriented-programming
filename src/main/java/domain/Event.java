@@ -33,4 +33,8 @@ public class Event {
         duration = schedule.getDuration();
     }
 
+    private long daysDistance(RecurringSchedule schedule) {
+        return schedule.getDayOfWeek().getValue() - from.getDayOfWeek().getValue();
+    }
+
 }
