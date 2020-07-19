@@ -26,5 +26,11 @@ public class Event {
         return true;
     }
 
+    private void reschedule(RecurringSchedule schedule) {
+        from = LocalDateTime.of(from.toLocalDate().plusDays(daysDistance(schedule)),
+                schedule.getFrom());
+
+        duration = schedule.getDuration();
+    }
 
 }
