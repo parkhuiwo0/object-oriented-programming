@@ -14,4 +14,17 @@ public class Event {
         this.from = from;
         this.duration = duration;
     }
+
+    public boolean isSatisfied(RecurringSchedule schedule) {
+        if (from.getDayOfWeek() != schedule.getDayOfWeek() ||
+                !from.toLocalTime().equals(schedule.getFrom()) ||
+                !duration.equals(schedule.getDuration())) {
+            reschedule(schedule);
+            return false;
+        }
+
+        return true;
+    }
+
+
 }
