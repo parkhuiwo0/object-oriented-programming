@@ -2,6 +2,7 @@ package domain;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * 클래스의 응집도를 높이기 위해,
@@ -10,6 +11,18 @@ import java.time.LocalTime;
  * 할인 조건에 대한 분리를 진행
  */
 public class PeriodCondition implements DiscountCondition {
+
+    public boolean isSatisfiedBy(Screening screening) {
+        return screening.isDiscountable(dayOfWeek, startTime, endTime);
+    }
+
+    @Override
+    public boolean isSatisfiedB2y(Screening screening) {
+        return screening.getStartTime().getDayOfWeek().equals(dayOfWeek) &&
+                startTime.compareTo(screening.getStartTime().toLocalTime()) <= 0 &&
+                endTime.compareTo(screening.getStartTime().toLocalTime()) >= 0;
+    }
+
     private DayOfWeek dayOfWeek;
     private LocalTime startTime;
     private LocalTime endTime;
@@ -20,11 +33,6 @@ public class PeriodCondition implements DiscountCondition {
         this.endTime = endTime;
     }
 
-    @Override
-    public boolean isSatisfiedBy(Screening screening) {
-        return screening.getStartTime().getDayOfWeek().equals(dayOfWeek) &&
-                startTime.compareTo(screening.getStartTime().toLocalTime()) <= 0 &&
-                endTime.compareTo(screening.getStartTime().toLocalTime()) >= 0;
-    }
+
 
 }

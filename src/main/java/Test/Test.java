@@ -1,12 +1,16 @@
 package Test;
 
+import com.sun.codemodel.internal.JForEach;
 import domain.Event;
+import domain.Movie;
 import domain.RecurringSchedule;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Test {
@@ -33,6 +37,13 @@ public class Test {
             meeting.reschedule(schedule);
         }
 
+    }
+
+    List<Movie> movies = new ArrayList<>();
+    int total;
+
+    for(Movie each : movies) {
+        total += each.getFee();
     }
 
 
