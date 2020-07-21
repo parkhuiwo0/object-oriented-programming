@@ -2,7 +2,9 @@ package domain;
 
 public class ReservationAgency {
 
-    public Reservation reserve(Screening screening, Customor customor, int audienceCount) {
+    public Reservation reserve(Screening screening, Customer customer)
+
+    public Reservation reserve2(Screening screening, Customor customor, int audienceCount) {
         boolean discountable = checkDiscountable(screening);
     }
 
